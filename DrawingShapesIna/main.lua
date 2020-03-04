@@ -18,13 +18,22 @@ local verticesTriangle = { -190, -100, 0, 100, 190, -100 }
 local triangle = display.newPolygon( 768, 192, verticesTriangle)
 local verticesOctogon = { -60, 150, 60, 150, 150, 60, 150, -60, 60, -150, -60, -150, -150, -60, -150, 60 }
 local octogon = display.newPolygon( 256, 574, verticesOctogon)
-local verticesStar = { 180, -60, 50, -60, 0, -180, -50, -60, -180, -60, -70, 30, -140, 160, 0, 100, 150, 160, 70, 30 }
-local star = display.newPolygon( 768, 574, verticesStar)
+local verticesHexagon = { 130, 130, 160, 0, 130, -130, -130, -130, -160, 0, -130, 130 }
+local hexagon = display.newPolygon( 768, 574, verticesHexagon)
 local baseOfTriangle = 20
 local heightOfTriangle = 55
 local areaOfTriangle 
 local areaText 
 local textSize = 27
+local trapezoidText
+local octogonText
+local triangleText
+local hexagonText 
+local trapezoidName = "TRAPEZOID"
+local octogonName = "OCTOGON"
+local triangleName = "TRIANGLE"
+local hexagonName = "HEXAGON"
+local shapeTextSize = 25
 local paint = {
 	type = "gradient",
 	color1 = { 255/255, 236/255, 255/255 },
@@ -53,6 +62,8 @@ local gradient =  {
 	color3 = { 232/255, 203/255, 230/255 },
 	direction = "up"
 }
+-- character image with width and height 
+local arrow = display.newImageRect("Images/arrow.png", 200, 200)
 
 -- set the width of the border 
 trapezoid.storkeWidth = 20
@@ -60,7 +71,6 @@ trapezoid.storkeWidth = 20
 trapezoid.strokeWidth = 10
 
 -- set the colour of the trapezoid 
-trapezoid:setFillColor(.8, .7, .8)
 trapezoid:setFillColor(paint)
 
 -- set the color of the border
@@ -85,13 +95,13 @@ octogon:setFillColor(paint)
 octogon:setStrokeColor(1, 1, 1)
 
 -- set the width of the border 
-star.strokeWidth = 10
+hexagon.strokeWidth = 10
 
 -- set the colour of the star 
-star:setFillColor(paint)
+hexagon:setFillColor(paint)
 
 -- set the color of the border
-star:setStrokeColor(1, 1, 1)
+hexagon:setStrokeColor(1, 1, 1)
 
 -- calculate the area 
 areaOfTriangle = baseOfTriangle * heightOfTriangle / 2 
@@ -107,5 +117,57 @@ areaText.anchorY = 0
 areaText.x = 525
 areaText.y = 310
 
+-- write the name of the trapezoid on the screen
+trapezoidText = display.newText(trapezoidName, 0, 0, Arial, shapeTextSize)
+
+-- anchor the text and set its (x.y) position 
+trapezoidText.anchorX = 0
+trapezoidText.anchorY = 0
+trapezoidText.x = 50
+trapezoidText.y = 40
+
+-- write the name of the triangle on the screen
+triangleText = display.newText(triangleName, 0, 0, Arial, shapeTextSize)
+
+-- anchor the text and set its (x.y) position 
+triangleText.anchorX = 0
+triangleText.anchorY = 0
+triangleText.x = 540
+triangleText.y = 40
+
+-- write the name of the octogon on the screen
+octogonText = display.newText(octogonName, 0, 0, Arial, shapeTextSize)
+
+-- anchor the text and set its (x.y) position 
+octogonText.anchorX = 0
+octogonText.anchorY = 0
+octogonText.x = 45
+octogonText.y = 730
+
+-- write the name  of the hexagon on the screen
+hexagonText = display.newText(hexagonName, 0, 0, Arial, shapeTextSize)
+
+-- anchor the text and set its (x.y) position 
+hexagonText.anchorX = 0
+hexagonText.anchorY = 0
+hexagonText.x = 540
+hexagonText.y = 730
+
 -- set the colour of the newText
 areaText:setTextColor(138/255, 124/255, 124/255)
+
+-- set the colour of the newText
+triangleText:setTextColor(176/255, 176/255, 176/255)
+
+-- set the colour of the newText
+octogonText:setTextColor(176/255, 176/255, 176/255)
+
+-- set the colour of the newText
+trapezoidText:setTextColor(176/255, 176/255, 176/255)
+
+-- set the colour of the newText
+hexagonText:setTextColor(176/255, 176/255, 176/255)
+
+
+
+
