@@ -36,10 +36,13 @@ local clouds = display.newImageRect("Images/clouds.png", 350, 350)
 local palmTree = display.newImageRect("Images/palmTree.png", 900, 900)
 
 -- local character image with a width and height 
-local sparkle = display.newImageRect("Images/sparkle.png", 600, 550)
+local smallPalmTree = display.newImageRect("Images/palmTree.png", 175, 175)
 
 -- set the image to be transparent 
 sun.alpha = 0
+
+-- shrink the size of the sun 
+sun: scale(1,1.01)
 
 -- set the initial x and y posititon of the sun
 sun.x = 155
@@ -53,20 +56,12 @@ clouds.y = 75
 clouds.alpha = 1
 
 -- set the initial x and y position of the palm tree 
-palmTree.x = 512
+palmTree.x = 170
 palmTree.y = 760
 
--- set the initial x and y position of the sparkle
-sparkle.x = 512
-sparkle.y = 375
-
-local xScale = ball.width
-local yScale = ball.height 
-
-local function sunIncrease()
-	transition.to( ball, { time = 500, delay = 500, w = 1, h = 1})
-end 
-
+-- set the initial x and y position of the small palm tree 
+smallPalmTree.x = 215
+smallPalmTree.y = 760
 
 
 -- Function: MoveSun 
@@ -76,13 +71,13 @@ end
 local function MoveSun(event)
 	-- add the scroll speed to the x-value of the sun 
 	sun.x = sun.x + scrollSpeed 
+	timer.performWithDelay(6000, HideCorrect)
 	-- change the transparency of the sun every time it moves so that it fades out 
-	sun.alpha = sun.alpha + 0.1
+	sun.alpha = sun.alpha + 0.01
 end
 
 -- MoveSun will be called over and over again 
 Runtime:addEventListener("enterFrame", MoveSun)
-
 
 -- Function: MoveClouds
 -- Input: this function accepts an event listener 
@@ -92,7 +87,7 @@ local function MoveClouds(event)
 	-- add the scroll speed to the x-value of the clouds
 	clouds.x = clouds.x + scrollSpeed 
 	-- change the transparency of the clouds every time it moves so that it fades out 
-	clouds.alpha = clouds.alpha - .001
+	clouds.alpha = clouds.alpha - .0001
 end
 
 -- MoveClouds will be called over and over again 
