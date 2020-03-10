@@ -9,9 +9,6 @@ display.setDefault("background", 232/255, 218/255, 239,255)
 -- to remove status background
 display.setStatusBar(display.HiddenStatusBar) 
 
-local verticesTrapezoid = { -70, 70, 70, 70, 160, -70, -160, -70 }
-local trapezoid = display.newPolygon(display.contentWidth/4, display.contentHeight/4, verticesTrapezoid)
-local myTrapezoid
 local verticesTrapezoid = { -100, 100, 100, 100, 190, -100, -190, -100 }
 local trapezoid = display.newPolygon( 256, 192, verticesTrapezoid)
 local verticesTriangle = { -190, -100, 0, 100, 190, -100 }
@@ -62,8 +59,6 @@ local gradient =  {
 	color3 = { 232/255, 203/255, 230/255 },
 	direction = "up"
 }
--- character image with width and height 
-local arrow = display.newImageRect("Images/arrow.png", 200, 200)
 
 -- set the width of the border 
 trapezoid.storkeWidth = 20
