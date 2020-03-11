@@ -8,7 +8,7 @@ display.setStatusBar(display.HiddenStatusBar)
 
 -- global variables 
 scrollSpeed = 2
-
+scrollSpeed1 = 5
 -- background image with width and height 
 local backgroundImage = display.newImageRect("Images/vancouver.jpeg", 1024, 768)
 backgroundImage.x = display.contentCenterX
@@ -25,6 +25,7 @@ local palmTree = display.newImageRect("Images/palmTree.png", 900, 900)
 
 -- local character image with a width and height 
 local smallPalmTree = display.newImageRect("Images/palmTree.png", 175, 175)
+
 
 
 -- set the image to be transparent 
@@ -71,6 +72,9 @@ local function MoveSun(event)
 	sun.x = sun.x + scrollSpeed 
 	-- change the transparency of the sun every time it moves so that it fades out 
 	sun.alpha = sun.alpha + 0.1
+	if (sun.x > 1024) then 
+		sun.x = 1024 - scrollSpeed1
+	end
 end
 
 -- MoveSun will be called over and over again 
