@@ -1,4 +1,4 @@
--- Title: Local Variables 
+ -- Title: Local Variables 
 -- Name: Ina 
 -- Course: ICS2O
 -- This program displays four different shapes and calculates their areas
@@ -107,7 +107,7 @@ areaText = display.newText("The area of this triangle with a base of \n" ..
 	areaOfTriangle .." pixels².", 0, 0, Arial, textSize)
 
 -- anchor the text and set its (x.y) position 
-areaText.anchorX = 0
+areaText.anchorX = 0 
 areaText.anchorY = 0
 areaText.x = 525
 areaText.y = 310

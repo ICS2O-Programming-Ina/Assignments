@@ -17,18 +17,6 @@ backgroundImage.y = display.contentCenterY
 -- local character image with width and height 
 local sun = display.newImageRect("Images/sun.png", 125, 125)
 
-local function rockSun()
-	if ( reverse == 0 ) then 
-		reverse = 1
-		transition.to( sun, { rotation = -45, time = 500, transition = easing.inOutCubic } )
-	else
-		reverse = 0
-		transition.to ( sun, { rotation = 45, time = 500, transition = easing.inOutCubic } )
-	end
-end
-
-timer.performWithDelay( 600, rockSun, 0 ) -- Repeat forever 
-
 -- local character image with a width and height 
 local clouds = display.newImageRect("Images/clouds.png", 350, 350)
 
@@ -38,11 +26,10 @@ local palmTree = display.newImageRect("Images/palmTree.png", 900, 900)
 -- local character image with a width and height 
 local smallPalmTree = display.newImageRect("Images/palmTree.png", 175, 175)
 
--- set the image to be transparent 
-sun.alpha = 0
 
--- shrink the size of the sun 
-sun: scale(1,1.01)
+-- set the image to be transparent 
+sun.alpha = .8
+
 
 -- set the initial x and y posititon of the sun
 sun.x = 155
@@ -63,6 +50,17 @@ palmTree.y = 760
 smallPalmTree.x = 215
 smallPalmTree.y = 760
 
+local function rockSun()
+	if ( reverse == 0 ) then 
+		reverse = 1 
+		transition.to( sun, { rotation = -45, time = 500, transition = easing.inOutCubic } )
+	else
+		reverse = 0 
+		transition.to ( sun, { rotation = 45, time = 500, transition = easing.inOutCubic } )
+	end
+end
+
+timer.performWithDelay( 600, rockSun, 0 )
 
 -- Function: MoveSun 
 -- Input: this function accepts an event listener 
@@ -71,9 +69,8 @@ smallPalmTree.y = 760
 local function MoveSun(event)
 	-- add the scroll speed to the x-value of the sun 
 	sun.x = sun.x + scrollSpeed 
-	timer.performWithDelay(6000, HideCorrect)
 	-- change the transparency of the sun every time it moves so that it fades out 
-	sun.alpha = sun.alpha + 0.01
+	sun.alpha = sun.alpha + 0.1
 end
 
 -- MoveSun will be called over and over again 
@@ -87,7 +84,7 @@ local function MoveClouds(event)
 	-- add the scroll speed to the x-value of the clouds
 	clouds.x = clouds.x + scrollSpeed 
 	-- change the transparency of the clouds every time it moves so that it fades out 
-	clouds.alpha = clouds.alpha - .0001
+	clouds.alpha = clouds.alpha - .001
 end
 
 -- MoveClouds will be called over and over again 
