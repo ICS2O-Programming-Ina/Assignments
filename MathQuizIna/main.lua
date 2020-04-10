@@ -215,7 +215,6 @@ local function NumericFieldListener( event )
 				gameOverSoundChannel = audio.play( gameOverSound )
 				countDownTimer = timer.cancel( countDownTimer )
 			end
-			AskQuestion()
 		end 
 	end
 end
