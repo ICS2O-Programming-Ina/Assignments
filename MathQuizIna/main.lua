@@ -171,7 +171,7 @@ local function NumericFieldListener( event )
 			numberCorrect = numberCorrect + 1 
 			-- update it in the display object 
 			numberCorrectText.text = "Number Correct = " .. numberCorrect
-			cheerSoundChannel = audio.play(cheerSound)
+			cheerSoundChannel = audio.play(cheerSound, { channel = 1 })
    			secondsLeft = totalSeconds2
 
 			if (numberCorrect == 5) then 
@@ -184,6 +184,7 @@ local function NumericFieldListener( event )
 				heart2.isVisible = false 
 				heart3.isVisible = false 
 				youWin.isVisible = true
+				audio.stop( 1 )
 				youWinSoundChannel = audio.play( youWinSound )
 				countDownTimer = timer.cancel( countDownTimer )
 			end
@@ -212,6 +213,7 @@ local function NumericFieldListener( event )
 				numberCorrectText.isVisible = false
 				actualAnswerText.isVisible = false
 				youLose.isVisible = true
+				audio.stop( 1 )
 				gameOverSoundChannel = audio.play( gameOverSound )
 				countDownTimer = timer.cancel( countDownTimer )
 			end
@@ -231,7 +233,7 @@ local function updateTime()
 		-- reset the number of seconds left 
 		secondsLeft = totalSeconds
 		lives = lives - 1
-		wrongSoundChannel = audio.play( wrongSound )
+		wrongSoundChannel = audio.play( wrongSound, { channel = 1} )
 		actualAnswerText.text = "The correct answer is " .. correctAnswer
 		actualAnswerText.isVisible = true
 		timer.performWithDelay(2000, HideActualAnswerText)
@@ -247,6 +249,7 @@ local function updateTime()
 			incorrectObject.isVisible = false 
 			clockText.isVisible = false 
 			questionObject.isVisible = false 
+			audio.stop( 1 )
 			gameOverSoundChannel = audio.play( gameOverSound )
 			countDownTimer = timer.cancel( countDownTimer )
 			numberCorrectText.isVisible = false
@@ -270,7 +273,7 @@ local function MoveYouLose(event)
 	-- add the scroll speed to the x-value of this image
 	youLose.x = youLose.x + scrollSpeed
 	-- change the transparency of the image every time it moves so that it fades out 
-	youLose.alpha = youLose.alpha + 0.01 
+	youLose.alpha = youLose.alpha + 0.1 
 end 
 
 -- MoveYouLose will be called over and over again 
@@ -335,10 +338,10 @@ youWin.isVisible = false
 
 -- create the you lose image 
 youLose = display.newImageRect("Images/youLose.jpg", 824, 568)
-youLose.x = -800
+youLose.x = -1000
 youLose.y = 384
 youLose.isVisible = false
-youLose.alpha = 0.7
+youLose.alpha = 0.2
 
 -----------------------------------------------------------------------------------------
 -- FUNCTION CALLS 
