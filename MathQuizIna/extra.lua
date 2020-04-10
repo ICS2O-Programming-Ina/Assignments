@@ -11,8 +11,6 @@ display.setStatusBar(display.HiddenStatusBar)
 -- sets the background colour 
 display.setDefault("background", 255/255, 153/255, 153/255)
 
-scrollSpeed = 4.5
-
 -----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------
@@ -22,34 +20,28 @@ local questionObject
 local correctObject 
 local incorrectObject 
 local numericField 
-local randomOperator = math.random(1,6)
+local randomOperator = math.random(1,4)
 local randomNumberAddSub1
 local randomNumberAddSub2
 local randomNumberMult1
 local randomNumberMult2 
 local randomNumberDiv1 
 local randomNumberDiv2 
-local randomNumberPow
-local randomNumberPow2
-local randomNumerSq
 local userAnswer 
-local correctAnswer 
+local correctAnswer
 local correctAnswer1 
-local actualAnswerText
 local textSize = 50 
 local numberCorrect = 0
+local actualAnswerText = "The correct answer "
 local totalSeconds = 10 
 local secondsLeft = 10 
 local clockText 
 local countDownTimer 
 local lives = 3 
-local totalSeconds2 = 12
 
 local heart1 
 local herat2
 local heart3
-local youWin 
-local youLose
 
 -----------------------------------------------------------------------------------------
 -- SOUNDS 
@@ -59,10 +51,6 @@ local cheerSound = audio.loadSound( "Sounds/cheerSound.mp3" )
 local cheerSoundChannel
 local gameOverSound = audio.loadSound( "Sounds/gameOverSound.mp3" )
 local gameOverSoundChannel
-local wrongSound = audio.loadSound( "Sounds/wrongSound.mp3" )
-local wrongSoundChannel 
-local youWinSound = audio.loadSound( "Sounds/youWinSound.mp3" )
-local youWinSoundChannel
 
 -----------------------------------------------------------------------------------------
 -- FUNCTIONS 
@@ -78,15 +66,11 @@ local function AskQuestion()
 	randomNumberMult2 = math.random(1,10)
 
 	-- generate 2 random numbers between a max and min for division questions 
-	randomNumberDiv1 = math.random(1,10)
-	randomNumberDiv2 = math.random(1,10)
+	randomNumberDiv1 = math.random(1,100)
+	randomNumberDiv2 = math.random(1,100)
 
-	-- generate a random number between a max and min for exponent questions 
-	randomNumberPow2 = math.random(1,3)
-	randomNumberPow = math.random(0,10)
-
-	-- generate a random number between a max and min for square root questions 
-	randomNumberSq = math.random(2,10)
+	-- resume the background music 
+	audio.resume( 1 )
 
 	-- if the random operator is 1, then do addition 
 	if (randomOperator == 1) then 
@@ -94,7 +78,6 @@ local function AskQuestion()
 		correctAnswer = randomNumberAddSub1 + randomNumberAddSub2
 		-- create question in text object 
 		questionObject.text = randomNumberAddSub1 .. " + " .. randomNumberAddSub2 .. " = "
-
 
 	-- otherwise, if the random operator is 3, do multiplication
 	elseif (randomOperator == 3) then 
@@ -110,21 +93,6 @@ local function AskQuestion()
 		correctAnswer = correctAnswer1 / randomNumberDiv1
 		-- create question in text object 
 		questionObject.text = correctAnswer1 .. " / " .. randomNumberDiv1 .. " = "
-
-	-- otherwise, if the random operator is 5, use an exponent
-	elseif (randomOperator == 5) then 
-		-- calculate the correct answer
-		correctAnswer = randomNumberPow ^ randomNumberPow2
-		-- create question in text object 
-		questionObject.text = randomNumberPow .. " ^ " .. randomNumberPow2 .. " = "
-	
-	-- otherwise, if the random operator is 5, use a square root
-	elseif (randomOperator == 6) then 
-		-- calculate the correct answer
-		correctAnswer1 = randomNumberSq * randomNumberSq
-		correctAnswer = math.sqrt(correctAnswer1)
-		-- create question in text object 
-		questionObject.text = "√" .. correctAnswer1 .. " = "
 
 	-- otherwise, if the random operator is 2, do subtraction
 	elseif (randomOperator == 2) then 
@@ -153,6 +121,7 @@ local function HideActualAnswerText()
 	actualAnswerText.isVisible = false
 end
 
+
 local function NumericFieldListener( event )
 	-- user begins editing "numericField"
 	if (event.phase == "began") then 
@@ -166,39 +135,32 @@ local function NumericFieldListener( event )
 		if (userAnswer == correctAnswer) then 
 			event.target.text = ""
 			correctObject.isVisible = true 
-			timer.performWithDelay(2000, HideCorrect)
+			timer.performWithDelay(2100, HideCorrect)
 			-- add a point if the user gets the correct answer 
 			numberCorrect = numberCorrect + 1 
 			-- update it in the display object 
 			numberCorrectText.text = "Number Correct = " .. numberCorrect
 			cheerSoundChannel = audio.play(cheerSound)
-   			secondsLeft = totalSeconds2
+			audio.stop( 1 )
+			secondsLeft = totalSeconds
 
 			if (numberCorrect == 5) then 
 				correctObject.isVisible = false 
 				numberCorrectText.isVisible = false 
-				numericField.isVisible = false 
-				clockText.isVisible = false 
-				questionObject.isVisible = false
-				heart1.isVisible = false 
-				heart2.isVisible = false 
-				heart3.isVisible = false 
-				youWin.isVisible = true
-				youWinSoundChannel = audio.play( youWinSound )
-				countDownTimer = timer.cancel( countDownTimer )
+				questionObject.isVisible = false 
 			end
 
 		else 
 			event.target.text = ""
 			incorrectObject.isVisible = true 
-			timer.performWithDelay(2000, HideIncorrect)
-			wrongSoundChannel = audio.play( wrongSound )
-			lives = lives - 1
-			actualAnswerText.text = "The correct answer is " .. correctAnswer
+			timer.performWithDelay(2100, HideIncorrect)
 			actualAnswerText.isVisible = true
-			timer.performWithDelay(2000, HideActualAnswerText)
-			secondsLeft = totalSeconds2
-		
+			timer.performWithDelay(2100, HideActualAnswerText)
+			actualAnswerText = display.newText("The correct answer is " .. correctAnswer, 480, 490, nil, 30)
+			actualAnswerText:setTextColor(176/255, 179/255, 191/255)
+			wrongSoundChannel = audio.play(wrongSound)
+			lives = lives - 1
+			audio.stop( 1 )
 			if (lives == 2) then 
 				heart3.isVisible = false 
 			elseif (lives == 1) then 
@@ -209,14 +171,13 @@ local function NumericFieldListener( event )
 				incorrectObject.isVisible = false 
 				clockText.isVisible = false 
 				questionObject.isVisible = false 
-				numberCorrectText.isVisible = false
-				actualAnswerText.isVisible = false
-				youLose.isVisible = true
+				actualAnswerText.isVisible = false 
 				gameOverSoundChannel = audio.play( gameOverSound )
 				countDownTimer = timer.cancel( countDownTimer )
+
 			end
 			AskQuestion()
-		end 
+		end
 	end
 end
 
@@ -232,11 +193,11 @@ local function updateTime()
 		-- reset the number of seconds left 
 		secondsLeft = totalSeconds
 		lives = lives - 1
-		wrongSoundChannel = audio.play( wrongSound )
-		actualAnswerText.text = "The correct answer is " .. correctAnswer
 		actualAnswerText.isVisible = true
-		timer.performWithDelay(2000, HideActualAnswerText)
-		secondsLeft = totalSeconds2
+		timer.performWithDelay(2100, HideActualAnswerText)
+		actualAnswerText = display.newText("The correct answer is " .. correctAnswer, 480, 490, nil, 30)
+		actualAnswerText:setTextColor(176/255, 179/255, 191/255)
+
 
 		if (lives == 2) then 
 			heart3.isVisible = false 
@@ -248,10 +209,9 @@ local function updateTime()
 			incorrectObject.isVisible = false 
 			clockText.isVisible = false 
 			questionObject.isVisible = false 
+			actualAnswerText.isVisible = false
 			gameOverSoundChannel = audio.play( gameOverSound )
 			countDownTimer = timer.cancel( countDownTimer )
-			numberCorrectText.isVisible = false
-			youLose.isVisible = true
 		end
 		AskQuestion()
 	end
@@ -263,26 +223,12 @@ local function StartTimer()
 	countDownTimer = timer.performWithDelay( 1000, updateTime, 0)
 end
 
--- Function: MoveYouLose
--- Input: this function accepts an event listener
--- Ouput: none 
--- Description: This funtion adds the scroll speed to the x-value of this image
-local function MoveYouLose(event)
-	-- add the scroll speed to the x-value of this image
-	youLose.x = youLose.x + scrollSpeed
-	-- change the transparency of the image every time it moves so that it fades out 
-	youLose.alpha = youLose.alpha + 0.01 
-end 
-
--- MoveYouLose will be called over and over again 
-Runtime:addEventListener("enterFrame", MoveYouLose)
-
 -----------------------------------------------------------------------------------------
 -- OBJECT CREATION
 -----------------------------------------------------------------------------------------
 
 -- displays a question and sets the colour 
-questionObject = display.newText( "", 405, 370, nil, 60, Arial, textSize)
+questionObject = display.newText( "", 405, 370, nil, 70, Arial, textSize)
 questionObject:setTextColor(250/255, 214/255, 214/255)
 
 -- create the correct text object and make it invisible 
@@ -298,11 +244,6 @@ incorrectObject.isVisible = false
 -- displays the amount of correct answers as a text object 
 numberCorrectText = display.newText( "Number Correct = " .. numberCorrect, 150, 730, nil, 32)
 numberCorrectText:setTextColor(161/255, 73/255, 73/255)
-
--- display the correct answer if eneterd incorrectly 
-actualAnswerText = display.newText("", 480, 505, nil, 35)
-actualAnswerText:setTextColor(225/255, 110/255, 110/255)
-actualAnswerText.isVisible = false
 
 -- create numeric field 
 numericField = native.newTextField( 590, 370, 150, 90)
@@ -328,19 +269,6 @@ heart3.y = 70
 clockText = display.newText( secondsLeft, 55, 70, nil, 50, Arial, textSize)
 clockText:setTextColor( 255/255, 255/255, 255/255)
 
--- create the you win image 
-youWin = display.newImageRect("Images/youWin.jpg", 1024, 768)
-youWin.x = 512
-youWin.y = 384
-youWin.isVisible = false
-
--- create the you lose image 
-youLose = display.newImageRect("Images/youLose.jpg", 824, 568)
-youLose.x = -800
-youLose.y = 384
-youLose.isVisible = false
-youLose.alpha = 0.7
-
 -----------------------------------------------------------------------------------------
 -- FUNCTION CALLS 
 -----------------------------------------------------------------------------------------
@@ -350,7 +278,6 @@ AskQuestion()
 
 -- call the function to start the timer 
 StartTimer()
-
 
 
 
