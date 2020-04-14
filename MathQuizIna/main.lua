@@ -69,6 +69,8 @@ local youWinSoundChannel
 -----------------------------------------------------------------------------------------
 
 local function AskQuestion()
+	-- generate a random number between 1 and 6
+	randomOperator = math.random(1,6)
 	-- generate 2 random numbers between a max and min for addition and subtraction questions 
 	randomNumberAddSub1 = math.random(1,20)
 	randomNumberAddSub2 = math.random(1,20)
