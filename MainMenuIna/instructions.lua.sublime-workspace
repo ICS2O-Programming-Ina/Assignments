@@ -1,0 +1,753 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"b",
+				"backgroundMusicChannel"
+			],
+			[
+				"Instruction",
+				"InstructionsTransition"
+			],
+			[
+				"ins",
+				"instructionsBUtton"
+			],
+			[
+				"Ins",
+				"Instructions"
+			],
+			[
+				"con",
+				"contentHeight"
+			],
+			[
+				"rese",
+				"resetTimer"
+			],
+			[
+				"you",
+				"youWin"
+			],
+			[
+				"yuo",
+				"youWin"
+			],
+			[
+				"numer",
+				"numericField"
+			],
+			[
+				"co",
+				"correctAnswer"
+			],
+			[
+				"heart",
+				"heart3"
+			],
+			[
+				"he",
+				"heart2"
+			],
+			[
+				"y",
+				"youWinSound"
+			],
+			[
+				"wron",
+				"wrongSoundChannel"
+			],
+			[
+				"randomNumberP",
+				"randomNumberPow"
+			],
+			[
+				"per",
+				"performWithDelay"
+			],
+			[
+				"re",
+				"realAnswerText"
+			],
+			[
+				"total",
+				"totalSeconds"
+			],
+			[
+				"start",
+				"StartTimer"
+			],
+			[
+				"pe",
+				"performWithDelay"
+			],
+			[
+				"tot",
+				"totalSeconds"
+			],
+			[
+				"g",
+				"gameOverSound"
+			],
+			[
+				"ga",
+				"gameOverSoundChannel"
+			],
+			[
+				"Pop",
+				"PopUpDelay"
+			],
+			[
+				"dog",
+				"dogSoundChannel"
+			],
+			[
+				"do",
+				"dogSound"
+			],
+			[
+				"num",
+				"numberCorrect"
+			],
+			[
+				"corr",
+				"correctObject"
+			],
+			[
+				"Hi",
+				"HideCorrect"
+			],
+			[
+				"ran",
+				"randomNumberAddSub1"
+			],
+			[
+				"ra",
+				"randomNumberMult1"
+			],
+			[
+				"randomNumberMult",
+				"randomNumberMult1"
+			],
+			[
+				"random",
+				"randomNumberAddSub1"
+			],
+			[
+				"ranod",
+				"random"
+			],
+			[
+				"r",
+				"random"
+			],
+			[
+				"randomNu",
+				"randomNumberAddSub2"
+			],
+			[
+				"ball",
+				"ball4"
+			],
+			[
+				"th",
+				"thirdBall"
+			],
+			[
+				"back",
+				"backgroundMusic"
+			],
+			[
+				"backgrou",
+				"backgroundChannel2"
+			],
+			[
+				"hea",
+				"heart4"
+			],
+			[
+				"else",
+				"elseif"
+			],
+			[
+				"time",
+				"timeLeftText"
+			],
+			[
+				"text",
+				"textSize"
+			],
+			[
+				"U",
+				"UpdateTime"
+			],
+			[
+				"count",
+				"countDownTimer"
+			],
+			[
+				"clock",
+				"clockText"
+			],
+			[
+				"secon",
+				"secondsLeft"
+			],
+			[
+				"corre",
+				"correctAnswer"
+			],
+			[
+				"run",
+				"randomNumber1"
+			],
+			[
+				"question",
+				"questionObject"
+			],
+			[
+				"inco",
+				"incorrectText"
+			],
+			[
+				"point",
+				"pointsText"
+			],
+			[
+				"i",
+				"isVisible"
+			],
+			[
+				"ques",
+				"questionObject"
+			],
+			[
+				"n",
+				"newText"
+			],
+			[
+				"in",
+				"incorrectText"
+			],
+			[
+				"pin",
+				"pointsText"
+			],
+			[
+				"incor",
+				"incorrect"
+			],
+			[
+				"incr",
+				"incorrect"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"cor",
+				"correctAnswer"
+			],
+			[
+				"inc",
+				"incorrect"
+			],
+			[
+				"pal",
+				"PalmTreeListener"
+			],
+			[
+				"palm",
+				"palmTree"
+			],
+			[
+				"is",
+				"isVisible"
+			],
+			[
+				"ba",
+				"backgroundText"
+			],
+			[
+				"backg",
+				"backgroundText"
+			],
+			[
+				"sc",
+				"scrollSpeed1"
+			],
+			[
+				"e",
+				"easing"
+			],
+			[
+				"alr",
+				"alreadyTouchedClearStar"
+			],
+			[
+				"lou",
+				"loungeSound"
+			],
+			[
+				"cont",
+				"contentHeight"
+			],
+			[
+				"content",
+				"contentWidth"
+			],
+			[
+				"min",
+				"minimumX"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"mi",
+				"maximumY"
+			],
+			[
+				"sm",
+				"smallPalmTree"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"area",
+				"areaText"
+			],
+			[
+				"heigh",
+				"heightOfTriangle"
+			],
+			[
+				"bas",
+				"baseOfTriangle"
+			],
+			[
+				"are",
+				"areaText"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "instructions_screen.lua",
+			"settings":
+			{
+				"buffer_size": 6795,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "-----------------------------------------------------------------------------------------\n--\n-- level1_screen.lua\n-- Created by: Your Name\n-- Date: Month Day, Year\n-- Description: This is the level 1 screen of the game.\n-----------------------------------------------------------------------------------------\n\n-----------------------------------------------------------------------------------------\n-- INITIALIZATIONS\n-----------------------------------------------------------------------------------------\n\n-- Use Composer Libraries\nlocal composer = require( \"composer\" )\nlocal widget = require( \"widget\" )\n\n-----------------------------------------------------------------------------------------\n\n-- Naming Scene\nsceneName = \"level1_screen\"\n\n-----------------------------------------------------------------------------------------\n\n-- Creating Scene Object\nlocal scene = composer.newScene( sceneName )\n\n-----------------------------------------------------------------------------------------\n-- LOCAL VARIABLES\n-----------------------------------------------------------------------------------------\n\n-- The local variables for this scene\nlocal bkg_image\n\n-----------------------------------------------------------------------------------------\n-- GLOBAL SCENE FUNCTIONS\n-----------------------------------------------------------------------------------------\n\n-- The function called when the screen doesn't exist\nfunction scene:create( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n\n    -----------------------------------------------------------------------------------------\n\n    -- Insert the background image\n    bkg_image = display.newImageRect(\"Images/level1_screen.png\", display.contentWidth, display.contentHeight)\n    bkg_image.x = display.contentCenterX\n    bkg_image.y = display.contentCenterY\n    bkg_image.width = 200\n    bkg_image.height = 100\n\n    -- Send the background image to the back layer so all other objects can be on top\n    bkg_image:toBack()\n\n        -- Insert background image into the scene group in order to ONLY be associated with this scene\n    sceneGroup:insert( bkg_image )    \n\nend --function scene:create( event )\n\n-----------------------------------------------------------------------------------------\n\n-- The function called when the scene is issued to appear on screen\nfunction scene:show( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n    local phase = event.phase\n\n    -----------------------------------------------------------------------------------------\n\n    if ( phase == \"will\" ) then\n\n        -- Called when the scene is still off screen (but is about to come on screen).\n    -----------------------------------------------------------------------------------------\n\n    elseif ( phase == \"did\" ) then\n\n        -- Called when the scene is now on screen.\n        -- Insert code here to make the scene come alive.\n        -- Example: start timers, begin animation, play audio, etc.\n\n    end\n\nend --function scene:show( event )\n\n-----------------------------------------------------------------------------------------\n\n-- The function called when the scene is issued to leave the screen\nfunction scene:hide( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n    local phase = event.phase\n\n    -----------------------------------------------------------------------------------------\n\n    if ( phase == \"will\" ) then\n        -- Called when the scene is on screen (but is about to go off screen).\n        -- Insert code here to \"pause\" the scene.\n        -- Example: stop timers, stop animation, stop audio, etc.\n\n    -----------------------------------------------------------------------------------------\n\n    elseif ( phase == \"did\" ) then\n        -- Called immediately after scene goes off screen.\n    end\n\nend --function scene:hide( event )\n\n-----------------------------------------------------------------------------------------\n\n-- The function called when the scene is issued to be destroyed\nfunction scene:destroy( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n\n    -----------------------------------------------------------------------------------------\n\n    -- Called prior to the removal of scene's view (\"sceneGroup\").\n    -- Insert code here to clean up the scene.\n    -- Example: remove display objects, save state, etc.\n\nend -- function scene:destroy( event )\n\n-----------------------------------------------------------------------------------------\n-- EVENT LISTENERS\n-----------------------------------------------------------------------------------------\n\n-- Adding Event Listeners\nscene:addEventListener( \"create\", scene )\nscene:addEventListener( \"show\", scene )\nscene:addEventListener( \"hide\", scene )\nscene:addEventListener( \"destroy\", scene )\n\n-----------------------------------------------------------------------------------------\n\nreturn scene\n",
+			"file": "level1_screen.lua",
+			"file_size": 5241,
+			"file_write_time": 132314382509422129,
+			"settings":
+			{
+				"buffer_size": 5067,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "credits_screen.lua",
+			"settings":
+			{
+				"buffer_size": 6775,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "main_menu.lua",
+			"settings":
+			{
+				"buffer_size": 9262,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "-----------------------------------------------------------------------------------------\n--\n-- splash_screen.lua\n-- Created by: Your Name\n-- Date: Month Day, Year\n-- Description: This is the splash screen of the game. It displays the \n-- company logo that...\n-----------------------------------------------------------------------------------------\n\n-- Use Composer Library\nlocal composer = require( \"composer\" )\n\n-- Name the Scene\nsceneName = \"splash_screen\"\n\n-----------------------------------------------------------------------------------------\n\n-- Create Scene Object\nlocal scene = composer.newScene( sceneName )\n\n----------------------------------------------------------------------------------------\n-- LOCAL VARIABLES\n-----------------------------------------------------------------------------------------\n \n-- The local variables for this scene\nlocal alien\nlocal scrollXSpeed = 8\nlocal scrollYSpeed = -3\nlocal alienSounds = audio.loadSound(\"Sounds/ufo.mp3\")\nlocal alienSoundsChannel\n\n\n--------------------------------------------------------------------------------------------\n-- LOCAL FUNCTIONS\n--------------------------------------------------------------------------------------------\n\n-- The function that moves the alien across the screen\nlocal function moveAlien()\n    alien.x = alien.x + scrollXSpeed\n    alien.y = alien.y + scrollYSpeed\n    alien.alpha = alien.alpha - 0.01\nend\n\n-- The function that will go to the main menu \nlocal function gotoMainMenu()\n    composer.gotoScene( \"main_menu\" )\nend\n\n-----------------------------------------------------------------------------------------\n-- GLOBAL SCENE FUNCTIONS\n-----------------------------------------------------------------------------------------\n\n-- The function called when the screen doesn't exist\nfunction scene:create( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n\n    -- set the background to be black\n    display.setDefault(\"background\", 0, 0, 0)\n\n    -- Insert the beetleship image\n    alien = display.newImageRect(\"Images/alien.png\", 250, 180)\n\n    -- set the initial x and y position of the beetleship\n    alien.x = 100\n    alien.y = display.contentHeight/2\n    alien.alpha = 1\n\n    -- Insert objects into the scene group in order to ONLY be associated with this scene\n    sceneGroup:insert( alien )\n\nend -- function scene:create( event )\n\n--------------------------------------------------------------------------------------------\n\n-- The function called when the scene is issued to appear on screen\nfunction scene:show( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n\n    -----------------------------------------------------------------------------------------\n\n    local phase = event.phase\n\n    -----------------------------------------------------------------------------------------\n\n    -- Called when the scene is still off screen (but is about to come on screen).\n    if ( phase == \"will\" ) then\n       \n    -----------------------------------------------------------------------------------------\n\n    elseif ( phase == \"did\" ) then\n        -- start the splash screen music\n        alienSoundsChannel = audio.play( alienSounds )\n\n        -- Call the moveAlien function as soon as we enter the frame.\n        Runtime:addEventListener(\"enterFrame\", moveAlien)\n\n        -- Go to the main menu screen after the given time.\n        timer.performWithDelay ( 2300, gotoMainMenu)          \n        \n    end\n\nend --function scene:show( event )\n\n-----------------------------------------------------------------------------------------\n\n-- The function called when the scene is issued to leave the screen\nfunction scene:hide( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n    local phase = event.phase\n\n    -----------------------------------------------------------------------------------------\n\n    -- Called when the scene is on screen (but is about to go off screen).\n    -- Insert code here to \"pause\" the scene.\n    -- Example: stop timers, stop animation, stop audio, etc.\n    if ( phase == \"will\" ) then  \n\n    -----------------------------------------------------------------------------------------\n\n    -- Called immediately after scene goes off screen.\n    elseif ( phase == \"did\" ) then\n        \n        -- stop the alien sounds channel for this screen\n        audio.stop(alienSoundsChannel)\n    end\n\nend --function scene:hide( event )\n\n-----------------------------------------------------------------------------------------\n\n-- The function called when the scene is issued to be destroyed\nfunction scene:destroy( event )\n\n    -- Creating a group that associates objects with the scene\n    local sceneGroup = self.view\n\n    -----------------------------------------------------------------------------------------\n\n\n    -- Called prior to the removal of scene's view (\"sceneGroup\").\n    -- Insert code here to clean up the scene.\n    -- Example: remove display objects, save state, etc.\nend -- function scene:destroy( event )\n\n-----------------------------------------------------------------------------------------\n-- EVENT LISTENERS\n-----------------------------------------------------------------------------------------\n\n-- Adding Event Listeners\nscene:addEventListener( \"create\", scene )\nscene:addEventListener( \"show\", scene )\nscene:addEventListener( \"hide\", scene )\nscene:addEventListener( \"destroy\", scene )\n\n-----------------------------------------------------------------------------------------\n\nreturn scene\n",
+			"file": "splash_screen.lua",
+			"file_size": 5775,
+			"file_write_time": 132319713869900826,
+			"settings":
+			{
+				"buffer_size": 5611,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "main.lua",
+			"settings":
+			{
+				"buffer_size": 691,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit 2---Advanced Concepts/SampleVideoGameInaT",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit 2---Advanced Concepts/SampleVideoGameInaT/Images",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit 2---Advanced Concepts/SampleVideoGameInaT/Images.xcassets"
+	],
+	"file_history":
+	[
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit-1---Introduction-to-Lua/TouchDragIna/main.lua",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit 2---Advanced Concepts/SampleVideoGameInaT/splash_screen.lua",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit 2---Advanced Concepts/SampleVideoGameInaT/instructions_screen.lua",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit 2---Advanced Concepts/SampleVideoGameInaT/level1_screen.lua",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Assignments/AnimatingImagesIna/main.lua",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit-1---Introduction-to-Lua/TouchReactIna/main.lua",
+		"/C/Users/Lawrence/Desktop/ICS2O Programming Ina/Unit-1---Introduction-to-Lua/AreaRectCircleIna/main.lua"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "C:\\Users\\Lawrence\\Desktop\\ICS2O Programming Ina\\Unit 2---Advanced Concepts\\SampleVideoGameInaT"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "instructions_screen.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6795,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3219,
+								3219
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 234.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "level1_screen.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5067,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2311,
+								2311
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "credits_screen.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3432,
+								3432
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 429.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "main_menu.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9262,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								89,
+								89
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "splash_screen.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5611,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4903,
+								4903
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 975.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "main.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 691,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								315,
+								315
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 277.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
