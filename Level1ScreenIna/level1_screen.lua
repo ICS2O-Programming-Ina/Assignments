@@ -1,10 +1,9 @@
 -----------------------------------------------------------------------------------------
 --
--- instructions_screen.lua
--- Created by: Ina 
--- Special thanks to Wal Wal for helping in the design of this framework.
--- Date: April 17, 2020
--- Description: This is the instructions page, displaying a back button to the main menu.
+-- level1_screen.lua
+-- Created by: Your Name
+-- Date: Month Day, Year
+-- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
@@ -18,32 +17,19 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "instructions_screen"
+sceneName = "level1_screen"
+
+-----------------------------------------------------------------------------------------
 
 -- Creating Scene Object
-scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
-
------------------------------------------------------------------------------------------
--- SOUNDS
------------------------------------------------------------------------------------------
-local instructionsSound = audio.loadSound("Sounds/instructionsSound.mp3")
-local instructionsSoundChannel
+local scene = composer.newScene( sceneName )
 
 -----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------
+
+-- The local variables for this scene
 local bkg_image
-local backButton
-
------------------------------------------------------------------------------------------
--- LOCAL FUNCTIONS
------------------------------------------------------------------------------------------
-
--- Creating Transitioning Function back to main menu
-local function BackTransition( )
-    composer.gotoScene( "main_menu", {effect = "slideUp", time = 500})
-end
-
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -56,52 +42,20 @@ function scene:create( event )
     local sceneGroup = self.view
 
     -----------------------------------------------------------------------------------------
-    -- BACKGROUND AND DISPLAY OBJECTS
-    -----------------------------------------------------------------------------------------
 
-    -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImageRect("Images/instructionsScreen2.png", display.contentWidth, display.contentHeight)
+    -- Insert the background image
+    bkg_image = display.newImageRect("Images/level1_screen.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
     bkg_image.height = display.contentHeight
 
-    -- Associating display objects with this scene 
-    sceneGroup:insert( bkg_image )
-
     -- Send the background image to the back layer so all other objects can be on top
     bkg_image:toBack()
 
-    -----------------------------------------------------------------------------------------
-    -- BUTTON WIDGETS
-    -----------------------------------------------------------------------------------------
+        -- Insert background image into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( bkg_image )    
 
-    -- Creating Back Button
-    backButton = widget.newButton( 
-    {
-        -- Setting Position
-        x = display.contentWidth*1.5/8,
-        y = display.contentHeight*14.5/16,
-    
-
-        -- Setting Dimensions
-        -- width = 1000,
-        -- height = 106,
-
-        -- Setting Visual Properties
-        defaultFile = "Images/backButton.png",
-        overFile = "Images/backButtonPressed.png",
-
-        -- Setting Functional Properties
-        onRelease = BackTransition
-
-    } )
-
-    -----------------------------------------------------------------------------------------
-
-    -- Associating Buttons with this scene
-    sceneGroup:insert( backButton )
-    
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
@@ -111,32 +65,24 @@ function scene:show( event )
 
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
-
-    -----------------------------------------------------------------------------------------
-
     local phase = event.phase
 
     -----------------------------------------------------------------------------------------
 
     if ( phase == "will" ) then
-        -- Called when the scene is still off screen (but is about to come on screen).
 
+        -- Called when the scene is still off screen (but is about to come on screen).
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
+
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-        if (soundOn == true) then 
-            -- play background music 
-            instructionsSoundChannel = audio.play( instructionsSound, {channel = 3, loops = -1} )
 
-        else
-
-        end
     end
 
-end -- function scene:show( event )
+end --function scene:show( event )
 
 -----------------------------------------------------------------------------------------
 
@@ -145,9 +91,6 @@ function scene:hide( event )
 
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
-
-    -----------------------------------------------------------------------------------------
-
     local phase = event.phase
 
     -----------------------------------------------------------------------------------------
@@ -161,7 +104,6 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
-        audio.stop(instructionsSoundChannel)
     end
 
 end --function scene:hide( event )
@@ -176,12 +118,11 @@ function scene:destroy( event )
 
     -----------------------------------------------------------------------------------------
 
-
     -- Called prior to the removal of scene's view ("sceneGroup").
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.
 
-end --function scene:destroy( event )
+end -- function scene:destroy( event )
 
 -----------------------------------------------------------------------------------------
 -- EVENT LISTENERS
@@ -196,5 +137,3 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
-
-
