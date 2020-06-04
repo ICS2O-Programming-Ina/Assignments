@@ -2,7 +2,7 @@
 --
 -- main_menu.lua
 -- Created by: Ina
--- Date: April 17, 2020
+-- Date: June 3, 2020
 -- Description: This is the main menu, displaying the credits, instructions & play buttons.
 -----------------------------------------------------------------------------------------
 
@@ -325,3 +325,4 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
+
