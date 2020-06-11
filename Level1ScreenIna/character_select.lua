@@ -1,10 +1,9 @@
 -----------------------------------------------------------------------------------------
 --
--- instructions_screen.lua
+-- character_select.lua
 -- Created by: Ina 
--- Special thanks to Wal Wal for helping in the design of this framework.
--- Date: April 17, 2020
--- Description: This is the instructions page, displaying a back button to the main menu.
+-- Date: June 10, 2020 
+-- Description: This is the character selection page, displaying three characters to choose from 
 -----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
@@ -292,5 +291,6 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
+
 
 

@@ -54,8 +54,8 @@ local answerPosition = 1
 local bkg
 local cover
 
-local X1 = 256
-local X2 = 600
+local X1 = 150
+local X2 = 620
 local Y1 = display.contentHeight*1/2
 local Y2 = display.contentHeight*5.5/7
 
@@ -175,36 +175,36 @@ local function DisplayQuestion()
         questionText.text = "What two colours make green?"
 
         --creating answer text from list it corispondes with the animals list
-        answerText.text = "yellow + blue"
+        answerText.text = "yellow and blue"
 
         --creating wrong answers
-        wrongText1.text = "red + orange"
-        wrongText2.text = "black + blue" 
-        wrongText3.text = "yellow + red"
+        wrongText1.text = "red and orange"
+        wrongText2.text = "black and blue" 
+        wrongText3.text = "yellow and red"
 
     elseif (randomQuestionNumber == 2) then
         --creating the question depending on the selcetion number
         questionText.text = "What two colours make purple?" 
 
         --creating answer text from list it corispondes with the animals list
-        answerText.text = "red + blue"
+        answerText.text = "red and blue"
 
         --creating wrong answers
-        wrongText1.text = "orange + blue"
-        wrongText2.text = "red + black" 
-        wrongText3.text = "green + yellow"
+        wrongText1.text = "orange and blue"
+        wrongText2.text = "red and black" 
+        wrongText3.text = "green and yellow"
 
     elseif (randomQuestionNumber == 3) then
         --creating the question depending on the selcetion number
         questionText.text = "What two colours make orange?" 
 
         --creating answer text from list it corispondes with the animals list
-        answerText.text = "red + yellow"
+        answerText.text = "red and yellow"
 
         --creating wrong answers
-        wrongText1.text = "brown + blue"
-        wrongText2.text = "red + green" 
-        wrongText3.text = "purple + yellow"
+        wrongText1.text = "brown and blue"
+        wrongText2.text = "red and green" 
+        wrongText3.text = "purple and yellow"
 
     elseif (randomQuestionNumber == 4) then
         --creating the question depending on the selcetion number

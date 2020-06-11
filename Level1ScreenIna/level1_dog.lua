@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
--- Created by: Ms Raffin
--- Date: Nov. 22nd, 2014
+-- Created by: Ina
+-- Date: June 5, 2020
 -- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 
@@ -55,9 +55,7 @@ local leaf6
 local fence1
 local fence2
 local fence3
-local fence4
 
-local torchesAndSign
 local door
 local door
 local dog 
@@ -295,9 +293,6 @@ local function onCollision( self, event )
 
     if ( event.phase == "began" ) then
 
-                --Pop sound
-        popSoundChannel = audio.play(popSound)
-
         if  (event.target.myName == "fence1") or 
             (event.target.myName == "fence2") or
             (event.target.myName == "fence3") then
@@ -421,7 +416,6 @@ local function AddPhysicsBodies()
 
     physics.addBody(leftW, "static", {density=1, friction=0.3, bounce=0.2} )
     physics.addBody(topW, "static", {density=1, friction=0.3, bounce=0.2} )
-    physics.addBody(floor, "static", {density=1, friction=0.3, bounce=0.2} )
     physics.addBody(rightW, "static", {density=1, friction=0.3, bounce=0.2} )
 
     physics.addBody(bone1, "static",  {density=0, friction=0, bounce=0} )
@@ -445,7 +439,6 @@ local function RemovePhysicsBodies()
 
     physics.removeBody(leftW)
     physics.removeBody(topW)
-    physics.removeBody(floor)
     physics.removeBody(rightW)
 
     physics.removeBody(door) 
@@ -638,13 +631,6 @@ function scene:create( event )
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( topW )
-
-    floor = display.newImageRect("Images/Level-1Floor.png", 1024, 100)
-    floor.x = display.contentCenterX
-    floor.y = display.contentHeight * 1.06
-    
-    -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( floor )
 
     --bone1
     bone1 = display.newImageRect ("Images/bone.png", 70, 70)
