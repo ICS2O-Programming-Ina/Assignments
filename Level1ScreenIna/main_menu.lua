@@ -2,7 +2,7 @@
 --
 -- main_menu.lua
 -- Created by: Ina
--- Date: April 17, 2020
+-- Date: June 3, 2020
 -- Description: This is the main menu, displaying the credits, instructions & play buttons.
 -----------------------------------------------------------------------------------------
 
@@ -41,6 +41,7 @@ soundOn = true
 local bkg_image
 local playButton
 local creditsButton
+local levelButton
 local instructionsButton 
 local backgroundMusic = audio.loadSound("Sounds/menuSound.mp3")
 local backgroundMusicChannel
@@ -59,8 +60,8 @@ end
 -----------------------------------------------------------------------------------------
 
 -- Creating Transition to Level1 Screen
-local function Level1ScreenTransition( )
-    composer.gotoScene( "level1_screen", {effect = "zoomInOutRotate", time = 1000})
+local function CharacterSelectTransition( )
+    composer.gotoScene( "character_select", {effect = "zoomOutIn", time = 900})
 end    
 
 -----------------------------------------------------------------------------------------
@@ -161,7 +162,7 @@ function scene:create( event )
             overFile = "Images/startButtonPressed.png",
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = Level1ScreenTransition          
+            onRelease = CharacterSelectTransition          
         } )
 
     -----------------------------------------------------------------------------------------
@@ -325,3 +326,4 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
+

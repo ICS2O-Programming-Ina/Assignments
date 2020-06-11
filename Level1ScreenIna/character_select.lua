@@ -18,7 +18,7 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "instructions_screen"
+sceneName = "character_select"
 
 -- Creating Scene Object
 scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
@@ -26,14 +26,18 @@ scene = composer.newScene( sceneName ) -- This function doesn't accept a string,
 -----------------------------------------------------------------------------------------
 -- SOUNDS
 -----------------------------------------------------------------------------------------
-local instructionsSound = audio.loadSound("Sounds/instructionsSound.mp3")
-local instructionsSoundChannel
+local backgroundMusic = audio.loadSound("Sounds/backgroundMusic.mp3")
+local backgroundMusicChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------
 local bkg_image
 local backButton
+local dogButton 
+local squirrelButton 
+local catButton 
+local characterText
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -42,6 +46,21 @@ local backButton
 -- Creating Transitioning Function back to main menu
 local function BackTransition( )
     composer.gotoScene( "main_menu", {effect = "slideUp", time = 500})
+end
+
+-- Creating Transitioning Function to the level1_dog
+local function DogScreenTransition( )
+    composer.gotoScene( "level1_dog", {effect = "slideUp", time = 500})
+end
+
+-- Creating Transitioning Function to the level1_screen
+local function SquirrelScreenTransition( )
+    composer.gotoScene( "level1_squirrel", {effect = "slideUp", time = 500})
+end
+
+-- Creating Transitioning Function to the level1_cat
+local function CatScreenTransition( )
+    composer.gotoScene( "level1_cat", {effect = "slideUp", time = 500})
 end
 
 
@@ -60,7 +79,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImageRect("Images/instructionsScreen3.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/grey.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -72,6 +91,14 @@ function scene:create( event )
     -- Send the background image to the back layer so all other objects can be on top
     bkg_image:toBack()
 
+    -- Insert the character text and set its position on the screen
+    characterText = display.newImageRect("Images/characterText.png", 600, 400 )
+    characterText.x = 800
+    characterText.y = 100
+
+    -- Associating display objects with this scene 
+    sceneGroup:insert( characterText )
+
     -----------------------------------------------------------------------------------------
     -- BUTTON WIDGETS
     -----------------------------------------------------------------------------------------
@@ -81,7 +108,7 @@ function scene:create( event )
     {
         -- Setting Position
         x = display.contentWidth*1.5/8,
-        y = display.contentHeight*14.5/16,
+        y = display.contentHeight*14.6/16,
     
 
         -- Setting Dimensions
@@ -97,10 +124,79 @@ function scene:create( event )
 
     } )
 
+
+    -- Creating Dog Button
+    dogButton = widget.newButton( 
+    {
+        -- Setting Position
+        x = 240,
+        y = display.contentHeight/6,
+    
+
+        -- Setting Dimensions
+        -- width = 1000,
+        -- height = 106,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/dogButton.png",
+        overFile = "Images/dogButtonPressed.png",
+
+        -- Setting Functional Properties
+        onRelease = DogScreenTransition
+
+    } )
+
+
+    -- Creating Squirrel Button
+    squirrelButton = widget.newButton( 
+    {
+        -- Setting Position
+        x = 520, 
+        y = display.contentHeight/2,
+    
+
+        -- Setting Dimensions
+        -- width = 1000,
+        -- height = 106,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/squirrelButton.png",
+        overFile = "Images/squirrelButtonPressed.png",
+
+        -- Setting Functional Properties
+        onRelease = SquirrelScreenTransition
+
+    } )
+
+
+    -- Creating Cat Button
+    catButton = widget.newButton( 
+    {
+        -- Setting Position
+        x = 800,
+        y = 640,
+    
+
+        -- Setting Dimensions
+        -- width = 1000,
+        -- height = 106,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/catButton.png",
+        overFile = "Images/catButtonPressed.png",
+
+        -- Setting Functional Properties
+        onRelease = CatScreenTransition
+
+    } )
+
     -----------------------------------------------------------------------------------------
 
     -- Associating Buttons with this scene
     sceneGroup:insert( backButton )
+    sceneGroup:insert( dogButton )
+    sceneGroup:insert( squirrelButton )
+    sceneGroup:insert( catButton )
     
 end --function scene:create( event )
 
@@ -129,7 +225,7 @@ function scene:show( event )
         -- Example: start timers, begin animation, play audio, etc.
         if (soundOn == true) then 
             -- play background music 
-            instructionsSoundChannel = audio.play( instructionsSound, {channel = 3, loops = -1} )
+            backgroundMusicChannel = audio.play( backgroundMusic, {channel = 3, loops = -1} )
 
         else
 
@@ -161,7 +257,7 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
-        audio.stop(instructionsSoundChannel)
+        audio.stop(backgroundMusicChannel)
     end
 
 end --function scene:hide( event )

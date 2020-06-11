@@ -41,21 +41,26 @@ local bkg_image
 
 local platform1
 local platform2
-local platform3
 local platform4
+local platform5
+local platform6
 
-local spikes1
-local spikes2
-local spikes3
+local leaf1
+local leaf2 
+local leaf3
+local leaf4
+local leaf5
+local leaf6
 
-local spikes1platform
-local spikes2platform
-local spikes3platform
+local fence1
+local fence2
+local fence3
+local fence4
 
 local torchesAndSign
 local door
 local door
-local character
+local cat
 
 local heart1
 local heart2
@@ -67,24 +72,31 @@ local uArrow
 local lArrow
 
 local motionx = 0
+local motiony = 4
+local motiony2 = 1
+local motiony3= 5
+local motiony4 = 6
+local motiony5 = 3
+local motiony6 = 9
 local SPEED = 6.5
 local LINEAR_VELOCITY = -100
-local GRAVITY = 6
+local GRAVITY = 11
 
 local leftW 
 local topW
 local floor
 local rightW
 
-local ball1
-local ball2
-local ball3
-local theBall
+local yarn1
+local yarn2
+local yarn3
+local theYarn
 
 local muteButton
 local unmuteButton 
 
 local questionsAnswered = 0
+
 
 -----------------------------------------------------------------------------------------
 -- SOUNDS
@@ -92,44 +104,67 @@ local questionsAnswered = 0
 
 local springSound = audio.loadSound("Sounds/dieSound.mp3")
 local springSoundChannel 
-local backgroundMusic = audio.loadStream("Sounds/bkgMusic.mp3")
+local backgroundMusic = audio.loadStream("Sounds/backgroundMusic.mp3")
 local backgroundMusicChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL SCENE FUNCTIONS
 ----------------------------------------------------------------------------------------- 
  
--- When right arrow is touched, move character right
+-- When right arrow is touched, move cat right
 local function right (touch)
     motionx = SPEED
-    character.xScale = 1
+    cat.xScale = 1
 end
 
 -- When up arrow is touched, add vertical so it can jump
 local function up (touch)
-    if (character ~= nil) then
-        character:setLinearVelocity( 0, LINEAR_VELOCITY )
+    if (cat ~= nil) then
+        cat:setLinearVelocity( 0, LINEAR_VELOCITY )
     end
 end
 
 -- When left arrow is touched, move charecter left 
 local function left (touch)
     motionx = -SPEED 
-    character.xScale = -1
+    cat.xScale = -1
 end
 
--- Move character horizontally
+-- Move cat horizontally
 local function movePlayer (event)
-    character.x = character.x + motionx
+    cat.x = cat.x + motionx
 end
  
--- Stop character movement when no arrow is pushed
+-- Stop cat movement when no arrow is pushed
 local function stop (event)
     if (event.phase =="ended") then
         motionx = 0
     end
 end
 
+local function moveLeafOne()
+    leaf1.y = leaf1.y + motiony4
+end
+
+local function moveLeafTwo()
+    leaf2.y = leaf2.y + motiony    
+end
+
+local function moveLeafThree()
+    leaf3.y = leaf3.y + motiony3    
+end
+
+local function moveLeafFour()
+    leaf4.y = leaf4.y + motiony5    
+end
+
+local function moveLeafFive()
+    leaf5.y = leaf5.y + motiony2    
+end
+
+local function moveLeafSix()
+    leaf6.y = leaf6.y + motiony6   
+end
 
 local function AddArrowEventListeners()
     rArrow:addEventListener("touch", right)
@@ -145,11 +180,23 @@ end
 
 local function AddRuntimeListeners()
     Runtime:addEventListener("enterFrame", movePlayer)
+    Runtime:addEventListener("enterFrame", moveLeafOne)
+    Runtime:addEventListener("enterFrame", moveLeafTwo)
+    Runtime:addEventListener("enterFrame", moveLeafThree)
+    Runtime:addEventListener("enterFrame", moveLeafFour)
+    Runtime:addEventListener("enterFrame", moveLeafFive)
+    Runtime:addEventListener("enterFrame", moveLeafSix)
     Runtime:addEventListener("touch", stop )
 end
 
 local function RemoveRuntimeListeners()
     Runtime:removeEventListener("enterFrame", movePlayer)
+    Runtime:removeEventListener("enterFrame", moveLeafOne)
+    Runtime:removeEventListener("enterFrame", moveLeafTwo)
+    Runtime:removeEventListener("enterFrame", moveLeafThree)
+    Runtime:removeEventListener("enterFrame", moveLeafFour)
+    Runtime:removeEventListener("enterFrame", moveLeafFive)
+    Runtime:removeEventListener("enterFrame", moveLeafSix)
     Runtime:removeEventListener("touch", stop )
 end
 
@@ -194,22 +241,22 @@ end
 
 
 
-local function ReplaceCharacter()
-    character = display.newImageRect("Images/KickyKatRight.png", 100, 150)
-    character.x = display.contentWidth * 0.5 / 8
-    character.y = display.contentHeight  * 0.1 / 3
-    character.width = 75
-    character.height = 100
-    character.myName = "KickyKat"
+local function ReplaceCat()
+    cat = display.newImageRect("Images/cat.png", 100, 150)
+    cat.x = 150 
+    cat.y = 680
+    cat.width = 90
+    cat.height = 100
+    cat.myName = "cat"
 
-    -- intialize horizontal movement of character
+    -- intialize horizontal movement of cat
     motionx = 0
 
     -- add physics body
-    physics.addBody( character, "dynamic", { density=0, friction=0.5, bounce=0, rotation=0 } )
+    physics.addBody( cat, "dynamic", { density=0, friction=0.5, bounce=0, rotation=0,} )
 
-    -- prevent character from being able to tip over
-    character.isFixedRotation = true
+    -- prevent cat from being able to tip over
+    cat.isFixedRotation = true
 
     -- add back arrow listeners
     AddArrowEventListeners()
@@ -218,10 +265,10 @@ local function ReplaceCharacter()
     AddRuntimeListeners()
 end
 
-local function MakeSoccerBallsVisible()
-    ball1.isVisible = true
-    ball2.isVisible = true
-    ball3.isVisible = true 
+local function MakeYarnsVisible()
+    yarn1.isVisible = true
+    yarn2.isVisible = true
+    yarn3.isVisible = true 
 end
 
 local function MakeHeartsVisible()
@@ -248,12 +295,12 @@ local function onCollision( self, event )
 
     if ( event.phase == "began" ) then
 
-        --Pop sound
+                --Pop sound
         popSoundChannel = audio.play(popSound)
 
-        if  (event.target.myName == "spikes1") or 
-            (event.target.myName == "spikes2") or
-            (event.target.myName == "spikes3") then
+        if  (event.target.myName == "fence1") or 
+            (event.target.myName == "fence2") or
+            (event.target.myName == "fence3") then
 
                 if (soundOn == true) then 
 
@@ -266,7 +313,7 @@ local function onCollision( self, event )
             RemoveRuntimeListeners()
 
             -- remove the character from the display
-            display.remove(character)
+            display.remove(cat)
 
             -- decrease number of lives
             numLives = numLives - 1
@@ -276,14 +323,14 @@ local function onCollision( self, event )
                 heart1.isVisible = false
                 heart2.isVisible = true
                 heart3.isVisible = true
-                timer.performWithDelay(200, ReplaceCharacter) 
+                timer.performWithDelay(200, ReplaceCat) 
 
             elseif (numLives == 1) then
                 -- update hearts
                 heart1.isVisible = false
                 heart2.isVisible = false
                 heart3.isVisible = true
-                timer.performWithDelay(200, ReplaceCharacter)
+                timer.performWithDelay(200, ReplaceCat)
 
             elseif (numLives == 0) then
                 -- update hearts
@@ -294,18 +341,18 @@ local function onCollision( self, event )
             end
         end
 
-        if  (event.target.myName == "ball1") or
-            (event.target.myName == "ball3") or
-            (event.target.myName == "ball2") then
+        if  (event.target.myName == "yarn1") or
+            (event.target.myName == "yarn2") or
+            (event.target.myName == "yarn3") then
 
-            -- get the ball that the user hit
-            theBall = event.target
+            -- get the yarn that the user hit
+            theYarn = event.target
 
-            -- stop the character from moving
+            -- stop the cat from moving
             motionx = 0
 
-            -- make the character invisible
-            character.isVisible = false
+            -- make the cat invisible
+            cat.isVisible = false
 
             -- show overlay with math question
             composer.showOverlay( "level1_question", { isModal = true, effect = "fade", time = 100})
@@ -328,65 +375,60 @@ end
 
 
 local function AddCollisionListeners()
-    -- if character collides with ball, onCollision will be called
-    spikes1.collision = onCollision
-    spikes1:addEventListener( "collision" )
-    spikes2.collision = onCollision
-    spikes2:addEventListener( "collision" )
-    spikes3.collision = onCollision
-    spikes3:addEventListener( "collision" )
+    -- if cat collides with yarn, onCollision will be called 
+    fence1.collision = onCollision
+    fence1:addEventListener( "collision" )
+    fence2.collision = onCollision
+    fence2:addEventListener( "collision" )
+    fence3.collision = onCollision
+    fence3:addEventListener( "collision" ) 
 
-    -- if character collides with ball, onCollision will be called    
-    ball1.collision = onCollision
-    ball1:addEventListener( "collision" )
-    ball2.collision = onCollision
-    ball2:addEventListener( "collision" )
-    ball3.collision = onCollision
-    ball3:addEventListener( "collision" )
+    yarn1.collision = onCollision
+    yarn1:addEventListener( "collision" )
+    yarn2.collision = onCollision
+    yarn2:addEventListener( "collision" )
+    yarn3.collision = onCollision
+    yarn3:addEventListener( "collision" )
 
     door.collision = onCollision
     door:addEventListener( "collision" )
 end
 
 local function RemoveCollisionListeners()
-    spikes1:removeEventListener( "collision" )
-    spikes2:removeEventListener( "collision" )
-    spikes3:removeEventListener( "collision" )
+    fence1:removeEventListener( "collision" )
+    fence2:removeEventListener( "collision" )
+    fence3:removeEventListener( "collision" )
 
-    ball1:removeEventListener( "collision" )
-    ball2:removeEventListener( "collision" )
-    ball3:removeEventListener( "collision" )
+    yarn1:removeEventListener( "collision" )
+    yarn2:removeEventListener( "collision" )
+    yarn3:removeEventListener( "collision" )
 
     door:removeEventListener( "collision")
-
 end
 
 local function AddPhysicsBodies()
     --add to the physics engine
     physics.addBody( platform1, "static", { density=1.0, friction=0.3, bounce=0.2 } )
     physics.addBody( platform2, "static", { density=1.0, friction=0.3, bounce=0.2 } )
-    physics.addBody( platform3, "static", { density=1.0, friction=0.3, bounce=0.2 } )
+    physics.addBody( platform3, "static", { density=1.0, friction=0.3, bounce=0.2 } )   
     physics.addBody( platform4, "static", { density=1.0, friction=0.3, bounce=0.2 } )
+    physics.addBody( platform5, "static", { density=1.0, friction=0.3, bounce=0.2 } )
+    physics.addBody( platform6, "static", { density=1.0, friction=0.3, bounce=0.2 } ) 
 
-    physics.addBody( spikes1, "static", { density=1.0, friction=0.3, bounce=0.2 } )
-    physics.addBody( spikes2, "static", { density=1.0, friction=0.3, bounce=0.2 } )
-    physics.addBody( spikes3, "static", { density=1.0, friction=0.3, bounce=0.2 } )    
-
-    physics.addBody( spikes1platform, "static", { density=1.0, friction=0.3, bounce=0.2 } )
-    physics.addBody( spikes2platform, "static", { density=1.0, friction=0.3, bounce=0.2 } )
-    physics.addBody( spikes3platform, "static", { density=1.0, friction=0.3, bounce=0.2 } )
+    physics.addBody( fence1, "static", { density=1.0, friction=0.3, bounce=0.2 } )
+    physics.addBody( fence2, "static", { density=1.0, friction=0.3, bounce=0.2 } )
+    physics.addBody( fence3, "static", { density=1.0, friction=0.3, bounce=0.2 } ) 
 
     physics.addBody(leftW, "static", {density=1, friction=0.3, bounce=0.2} )
     physics.addBody(topW, "static", {density=1, friction=0.3, bounce=0.2} )
     physics.addBody(floor, "static", {density=1, friction=0.3, bounce=0.2} )
     physics.addBody(rightW, "static", {density=1, friction=0.3, bounce=0.2} )
 
-    physics.addBody(ball1, "static",  {density=0, friction=0, bounce=0} )
-    physics.addBody(ball2, "static",  {density=0, friction=0, bounce=0} )
-    physics.addBody(ball3, "static",  {density=0, friction=0, bounce=0} )
+    physics.addBody(yarn1, "static",  {density=0, friction=0, bounce=0} )
+    physics.addBody(yarn2, "static",  {density=0, friction=0, bounce=0} )
+    physics.addBody(yarn3, "static",  {density=0, friction=0, bounce=0} )
 
     physics.addBody(door, "static", {density=1, friction=0.3, bounce=0.2})
-
 end
 
 local function RemovePhysicsBodies()
@@ -394,22 +436,19 @@ local function RemovePhysicsBodies()
     physics.removeBody(platform2)
     physics.removeBody(platform3)
     physics.removeBody(platform4)
+    physics.removeBody(platform5)
+    physics.removeBody(platform6)
 
-    physics.removeBody(spikes1)
-    physics.removeBody(spikes2)
-    physics.removeBody(spikes3)
-
-    physics.removeBody(spikes1platform)
-    physics.removeBody(spikes2platform)
-    physics.removeBody(spikes3platform)
+    physics.removeBody(fence1)
+    physics.removeBody(fence2)
+    physics.removeBody(fence3)
 
     physics.removeBody(leftW)
     physics.removeBody(topW)
     physics.removeBody(floor)
     physics.removeBody(rightW)
 
-    physics.removeBody(door)
- 
+    physics.removeBody(door) 
 end
 
 -----------------------------------------------------------------------------------------
@@ -418,13 +457,13 @@ end
 
 function ResumeGame()
 
-    -- make character visible again
-    character.isVisible = true
+    -- make cat visible again
+    cat.isVisible = true
     
     if (questionsAnswered > 0) then
-        if (theBall ~= nil) and (theBall.isBodyActive == true) then
-            physics.removeBody(theBall)
-            theBall.isVisible = false
+        if (theYarn ~= nil) and (theYarn.isBodyActive == true) then
+            physics.removeBody(theYarn)
+            theYarn.isVisible = false
         end
     end
 
@@ -441,96 +480,92 @@ function scene:create( event )
     local sceneGroup = self.view
 
     -- Insert the background image
-    bkg_image = display.newImageRect("Images/Level-1BKG.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/forest.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentWidth / 2 
     bkg_image.y = display.contentHeight / 2
 
     -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image )    
+
+    fence1 = display.newImageRect("Images/fenceRight.png", 90, 140)
+    fence1.x = 670
+    fence1.y = 90
+    fence1.myName = "fence1"
+
+    sceneGroup:insert( fence1 )
+
+    fence2 = display.newImageRect("Images/fence.png", 260, 56)
+    fence2.x = 595
+    fence2.y = 690
+    fence2.myName = "fence2"
+
+    sceneGroup:insert( fence2 )
+
+    fence3 = display.newImageRect("Images/fenceDown.png", 298, 66)
+    fence3.x = 140
+    fence3.y = 340
+    fence3.myName = "fence3"
+
+    sceneGroup:insert( fence3 )
     
     -- Insert the platforms
-    platform1 = display.newImageRect("Images/Level-1Platform1.png", 250, 50)
+    platform1 = display.newImageRect("Images/platform1.png", 250, 50)
     platform1.x = display.contentWidth * 1 / 8
     platform1.y = display.contentHeight * 1.6 / 4
         
     sceneGroup:insert( platform1 )
 
-    platform2 = display.newImageRect("Images/Level-1Platform1.png", 150, 50)
-    platform2.x = display.contentWidth /2.1
-    platform2.y = display.contentHeight * 1.2 / 4
+    platform2 = display.newImageRect("Images/platform1.png", 150, 50)
+    platform2.x = display.contentWidth * 4.3/5
+    platform2.width = 320
+    platform2.height = 50
+    platform2.y = display.contentHeight * 3.3 / 5
         
-    sceneGroup:insert( platform2 )
+    sceneGroup:insert( platform2 )    
 
-    platform3 = display.newImageRect("Images/Level-1Platform1.png", 180, 50)
-    platform3.x = display.contentWidth *3 / 5
-    platform3.y = display.contentHeight * 3.5 / 5
+    platform3 = display.newImageRect("Images/platform1.png", 180, 50)
+    platform3.x = display.contentWidth *4.7 / 5
+    platform3.y = display.contentHeight * 1.3 / 5
         
     sceneGroup:insert( platform3 )
 
-    platform4 = display.newImageRect("Images/Level-1Platform1.png", 180, 50)
-    platform4.x = display.contentWidth *4.7 / 5
-    platform4.y = display.contentHeight * 1.3 / 5
+    platform4 = display.newImageRect("Images/platform2.png", 50, 150)
+    platform4.x = display.contentWidth * 5 / 8
+    platform4.height = 300
+    platform4.y = display.contentHeight * 0.4 / 5
         
-    sceneGroup:insert( platform4 )
+    sceneGroup:insert( platform4)
 
-    spikes1 = display.newImageRect("Images/Level-1Spikes1.png", 250, 50)
-    spikes1.x = display.contentWidth * 3 / 8
-    spikes1.y = display.contentHeight * 2.5 / 5
-    spikes1.myName = "spikes1"
+
+    platform5 = display.newImageRect("Images/platform1.png", 250, 50)
+    platform5.x = display.contentWidth * 1.5 / 8
+    platform5.y = display.contentHeight * 3.5 / 5
         
-    sceneGroup:insert( spikes1)
+    sceneGroup:insert( platform5 )
 
-    spikes1platform = display.newImageRect("Images/Level-1Platform1.png", 250, 50)
-    spikes1platform.x = display.contentWidth * 3 / 8
-    spikes1platform.y = display.contentHeight * 2.8 / 5
+
+    platform6 = display.newImageRect("Images/platform1.png", 150, 50)
+    platform6.x = 512
+    platform6.width = 1024
+    platform6.height = 40
+    platform6.y = 700
         
-    sceneGroup:insert( spikes1platform)
+    sceneGroup:insert( platform6 )
 
-    spikes2 = display.newImageRect("Images/Level-1Spikes2.png", 150, 50)
-    spikes2.x = display.contentWidth * 6 / 8
-    spikes2.y = display.contentHeight * 2.5 / 5
-    spikes2.myName = "spikes2"
-        
-    sceneGroup:insert( spikes2)
-
-    spikes2platform = display.newImageRect("Images/Level-1Platform1.png", 150, 50)
-    spikes2platform.x = display.contentWidth * 6 / 8
-    spikes2platform.y = display.contentHeight * 2.2 / 5
-        
-    sceneGroup:insert( spikes2platform)
-
-    spikes3 = display.newImageRect("Images/Level-1Spikes3.png", 50, 150)
-    spikes3.x = display.contentWidth * 5.5 / 8
-    spikes3.y = display.contentHeight * 0.4 / 5
-    spikes3.myName = "spikes3"
-        
-    sceneGroup:insert( spikes3)
-
-    spikes3platform = display.newImageRect("Images/Level-1Platform2.png", 50, 150)
-    spikes3platform.x = display.contentWidth * 5.8 / 8
-    spikes3platform.y = display.contentHeight * 0.4 / 5
-        
-    sceneGroup:insert( spikes3platform)
-
-    -- Insert the torchesAndSign Objects
-    torchesAndSign = display.newImageRect("Images/Level-1Random.png", display.contentWidth, display.contentHeight)
-    torchesAndSign.x = display.contentCenterX
-    torchesAndSign.y = display.contentCenterY + 10
-
-    -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( torchesAndSign )
 
     -- Insert the Door
-    door = display.newImage("Images/Level-1Door.png", 200, 200)
-    door.x = display.contentWidth/5 
-    door.y = display.contentHeight*6.1/7
+    door = display.newImage("Images/door.png", 200, 200)
+    door.x = display.contentWidth*7.17/8 
+    door.y = display.contentHeight/1.93
+    door.width = 210
+    door.height = 180
     door.myName = "door"
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( door )
 
     -- Insert the Hearts
-    heart1 = display.newImageRect("Images/heart.png", 50, 50)
+    heart1 = display.newImageRect("Images/heart2.png", 50, 50)
     heart1.x = 50
     heart1.y = 50
     heart1.isVisible = true
@@ -538,7 +573,7 @@ function scene:create( event )
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( heart1 )
 
-    heart2 = display.newImageRect("Images/heart.png", 50, 50)
+    heart2 = display.newImageRect("Images/heart2.png", 50, 50)
     heart2.x = 110
     heart2.y = 50
     heart2.isVisible = true
@@ -546,7 +581,7 @@ function scene:create( event )
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( heart2 )
 
-    heart3 = display.newImageRect("Images/heart.png", 50, 50)
+    heart3 = display.newImageRect("Images/heart2.png", 50, 50)
     heart3.x = 170
     heart3.y = 50
     heart3.isVisible = true
@@ -556,24 +591,30 @@ function scene:create( event )
 
 
     --Insert the right arrow
-    rArrow = display.newImageRect("Images/RightArrowUnpressed.png", 100, 50)
+    rArrow = display.newImageRect("Images/rightArrow.png", 100, 50)
     rArrow.x = display.contentWidth * 9.2 / 10
+    rArrow.width = 200 
+    rArrow.height = 180
     rArrow.y = display.contentHeight * 9.5 / 10
    
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( rArrow)
 
     --Insert the up arrow
-    uArrow = display.newImageRect("Images/UpArrowUnpressed.png", 50, 100)
+    uArrow = display.newImageRect("Images/upArrow.png", 50, 100)
     uArrow.x = display.contentWidth * 8.2 / 10
+    uArrow.width = 230
+    uArrow.height = 180
     uArrow.y = display.contentHeight * 8.5 / 10
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( uArrow)
 
     --Insert the left arrow
-    lArrow = display.newImageRect("Images/LeftArrowUnpressed.png", 100, 50)
+    lArrow = display.newImageRect("Images/leftArrow.png", 100, 50)
     lArrow.x = display.contentWidth * 7.2 / 10
+    lArrow.width = 200 
+    lArrow.height = 180
     lArrow.y = display.contentHeight * 9.5 / 10
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
@@ -606,35 +647,35 @@ function scene:create( event )
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( floor )
 
-    --ball1
-    ball1 = display.newImageRect ("Images/SoccerBall.png", 70, 70)
-    ball1.x = 610
-    ball1.y = 480
-    ball1.myName = "ball1"
+    --yarn1
+    yarn1 = display.newImageRect ("Images/yarn.png", 70, 70)
+    yarn1.x = 955
+    yarn1.y = 140
+    yarn1.myName = "yarn1"
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( ball1 )
+    sceneGroup:insert( yarn1 )
 
-    --ball2
-    ball2 = display.newImageRect ("Images/SoccerBall.png", 70, 70)
-    ball2.x = 490
-    ball2.y = 170
-    ball2.myName = "ball2"
-
-    -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( ball2 )
-
-    --ball3
-    ball3 = display.newImageRect ("Images/SoccerBall.png", 70, 70)
-    ball3.x = 955
-    ball3.y = 140
-    ball3.myName = "ball3"
+    --yarn2
+    yarn2 = display.newImageRect ("Images/yarn.png", 70, 70)
+    yarn2.x = 230
+    yarn2.y = 480
+    yarn2.myName = "yarn2"
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( ball3 )
+    sceneGroup:insert( yarn2 )
+
+    --yarn3
+    yarn3 = display.newImageRect ("Images/yarn.png", 70, 70)
+    yarn3.x = display.contentWidth * 0.5 / 8
+    yarn3.y = display.contentHeight  * .98 / 3
+    yarn3.myName = "yarn3"
+
+    -- Insert objects into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( yarn3 )
 
     -- mute button 
-    muteButton = display.newImageRect ("Images/mute.png", 70, 70)
+    muteButton = display.newImageRect ("Images/muteButton.png", 70, 70)
     muteButton.x = 50 
     muteButton.y = 730
     muteButton.isVisible = false
@@ -650,6 +691,46 @@ function scene:create( event )
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( unmuteButton )
+
+    leaf1 = display.newImageRect ("Images/leaf1.png", 80, 80)
+    leaf1.x = 350
+    leaf1.y = 0
+    leaf1.myName = "leaf1"
+
+    leaf2 = display.newImageRect ("Images/leaf1.png", 80, 80)
+    leaf2.x = 260
+    leaf2.y = 0
+    leaf2.myName = "leaf2"
+
+    leaf3 = display.newImageRect ("Images/leaf1.png", 80, 80)
+    leaf3.x = 785
+    leaf3.y = 0
+    leaf3.myName = "leaf3"
+
+
+    leaf4 = display.newImageRect ("Images/leaf1.png", 80, 80)
+    leaf4.x = 480
+    leaf4.y = 0
+    leaf4.myName = "leaf4"
+
+    leaf5 = display.newImageRect ("Images/leaf1.png", 80, 80)
+    leaf5.x = 220
+    leaf5.y = 0
+    leaf5.myName = "leaf5"
+
+    leaf6 = display.newImageRect ("Images/leaf1.png", 80, 80)
+    leaf6.x = 800
+    leaf6.y = 0
+    leaf6.myName = "leaf6"
+
+    -- Insert objects into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( leaf1 )
+    sceneGroup:insert( leaf2 )
+    sceneGroup:insert( leaf3 )
+    sceneGroup:insert( leaf4 )
+    sceneGroup:insert( leaf5 )
+    sceneGroup:insert( leaf6 )
+
 
 end --function scene:create( event )
 
@@ -693,8 +774,8 @@ function scene:show( event )
 
         end
 
-        -- make all soccer balls visible
-        MakeSoccerBallsVisible()
+        -- make all  yarns visible
+        MakeYarnsVisible()
 
         -- make all lives visible
         MakeHeartsVisible()
@@ -705,8 +786,8 @@ function scene:show( event )
         -- add collision listeners to objects
         AddCollisionListeners()
 
-        -- create the character, add physics bodies and runtime listeners
-        ReplaceCharacter()
+        -- create the cat, add physics bodies and runtime listeners
+        ReplaceCat()
 
         -- add the mute an unmute functionality to the buttons 
         AddMuteUnMuteListeners()
@@ -745,7 +826,7 @@ function scene:hide( event )
         RemoveArrowEventListeners()
         RemoveRuntimeListeners()
         RemoveMuteUnMuteListeners()
-        display.remove(character)
+        display.remove(cat)
     end
 
 end --function scene:hide( event )
